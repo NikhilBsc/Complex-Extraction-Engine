@@ -1,0 +1,10 @@
+pymupdf
+pdfplumber
+pytesseract
+presidio-analyzer
+presidio-anonymizer
+spacy
+openai
+python-dotenv
+pandas
+openpyxl

@@ -1,0 +1,294 @@
+{
+  "pdf_document": "3of6_Balfour_Beatty_Northern_Group_Housing_2025_EL.pdf (2) (1).pdf",
+  "pipeline_metrics": {
+    "total_pages": 14,
+    "total_segments": 4,
+    "tier1_raw_candidates": 30,
+    "tier1_normalized_candidates": 15,
+    "tier2_counts": {
+      "KEEP": 13,
+      "MERGE": 0,
+      "REJECT": 1,
+      "REVIEW": 1
+    },
+    "tier3_input_candidates": 13,
+    "tier3_canonical_fields_count": 9,
+    "tier3_consolidated_count": 6,
+    "tier3_flagged_count": 3
+  },
+  "tier3_canonical_output": [
+    {
+      "canonical_field_name": "Client_Representative",
+      "value": "Sarah Bitto",
+      "evidence": "Attention: Sarah Bitto",
+      "source_candidate_ids": [
+        "cand_57590b2c"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Parties",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_57590b2c']",
+      "source_evidences": [
+        "Attention: Sarah Bitto"
+      ]
+    },
+    {
+      "canonical_field_name": "Document_Type",
+      "value": "Engagement Letter",
+      "evidence": "Engagement Letter",
+      "source_candidate_ids": [
+        "cand_9fc499a7"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_9fc499a7']",
+      "source_evidences": [
+        "Engagement Letter"
+      ]
+    },
+    {
+      "canonical_field_name": "Scope_of_Services",
+      "value": "Audit and Attestation Services",
+      "evidence": "Audit and Attestation Services",
+      "source_candidate_ids": [
+        "cand_d70a2132"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_d70a2132']",
+      "source_evidences": [
+        "Audit and Attestation Services"
+      ]
+    },
+    {
+      "canonical_field_name": "Engagement_Period",
+      "value": "Fiscal Year 2025 Engagement Period",
+      "evidence": "period covering Fiscal Year 2025 Engagement Period",
+      "source_candidate_ids": [
+        "cand_e60fb056"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Dates",
+      "confidence": 0.93,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_e60fb056']",
+      "source_evidences": [
+        "period covering Fiscal Year 2025 Engagement Period"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_53600",
+      "value": "$53,600",
+      "evidence": "$53,600",
+      "source_candidate_ids": [
+        "cand_ab81072b"
+      ],
+      "page_numbers": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_ab81072b']",
+      "source_evidences": [
+        "$53,600"
+      ]
+    },
+    {
+      "canonical_field_name": "Standard_Terms_Release_Version",
+      "value": "AICPA November 2024 Release",
+      "evidence": "AICPA November 2024 Release",
+      "source_candidate_ids": [
+        "cand_6ae26aeb"
+      ],
+      "page_numbers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Identifiers",
+      "confidence": 0.88,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_6ae26aeb']",
+      "source_evidences": [
+        "AICPA November 2024 Release"
+      ]
+    },
+    {
+      "canonical_field_name": "Contact_Phone",
+      "value": "15219-2598",
+      "evidence": "15219-2598 | +1 412 391 9710 | +1 412 202 9710",
+      "source_candidate_ids": [
+        "cand_9d31b5c4",
+        "cand_9436e7d0",
+        "cand_2431d703"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Parties",
+      "confidence": 0.9,
+      "status": "conflicting_flagged",
+      "resolution_notes": "Conflicting values detected for field 'Contact Phone': ['15219-2598', '+1 412 391 9710', '+1 412 202 9710']; flagged for review because document context does not establish a single value.",
+      "source_evidences": [
+        "15219-2598",
+        "+1 412 391 9710",
+        "+1 412 202 9710"
+      ]
+    },
+    {
+      "canonical_field_name": "Firm_Provider_Name",
+      "value": "KPMG LLP",
+      "evidence": "KPMG LLP | On behalf of Client in connection with the Services in accordance with the Data Privacy Framework and its privacy policy located at https://kpmg",
+      "source_candidate_ids": [
+        "cand_b0b04cb7",
+        "cand_f2d5c153"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "segment_ids": [
+        "seg_001",
+        "seg_004"
+      ],
+      "category_hint": "Parties",
+      "confidence": 0.93,
+      "status": "conflicting_flagged",
+      "resolution_notes": "Conflicting values detected for field 'Firm / Provider Name': ['KPMG LLP', 'Client in connection with the Services in accordance with the Data Privacy Framework and its privacy policy located at https://kpmg']; flagged for review because document context does not establish a single value.",
+      "source_evidences": [
+        "KPMG LLP",
+        "On behalf of Client in connection with the Services in accordance with the Data Privacy Framework and its privacy policy located at https://kpmg"
+      ]
+    },
+    {
+      "canonical_field_name": "Contract_Effective_Date",
+      "value": "November 4, 2025",
+      "evidence": "November 4, 2025 | December 31, 2025",
+      "source_candidate_ids": [
+        "cand_055aa8b7",
+        "cand_80def2c3"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "segment_ids": [
+        "seg_001",
+        "seg_002"
+      ],
+      "category_hint": "Dates",
+      "confidence": 0.92,
+      "status": "conflicting_flagged",
+      "resolution_notes": "Conflicting values detected for field 'Effective Date': ['November 4, 2025', 'December 31, 2025']; flagged for review because document context does not establish a single value.",
+      "source_evidences": [
+        "November 4, 2025",
+        "December 31, 2025"
+      ]
+    }
+  ]
+}

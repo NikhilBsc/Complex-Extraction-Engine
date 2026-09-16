@@ -1,0 +1,67 @@
+{
+  "raw_total_count": 5,
+  "normalized_total_count": 5,
+  "collapsed_count": 0,
+  "records": [
+    {
+      "raw_candidate_id": "cand_001",
+      "candidate_name": "Client Name",
+      "value": "Acme Corp",
+      "action": "RETAINED_AS_PRIMARY",
+      "target_candidate_id": "cand_001",
+      "reason": "Retained as primary normalized entry for field 'Client Name' with value 'Acme Corp'",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "raw_candidate_id": "cand_002",
+      "candidate_name": "Page Number",
+      "value": "Page 1 of 10",
+      "action": "RETAINED_AS_PRIMARY",
+      "target_candidate_id": "cand_002",
+      "reason": "Retained as primary normalized entry for field 'Page Number' with value 'Page 1 of 10'",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "raw_candidate_id": "cand_003",
+      "candidate_name": "Fee Structure",
+      "value": "$50,000",
+      "action": "RETAINED_AS_PRIMARY",
+      "target_candidate_id": "cand_003",
+      "reason": "Retained as primary normalized entry for field 'Fee Structure' with value '$50,000'",
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "raw_candidate_id": "cand_004",
+      "candidate_name": "Total Fee Amount",
+      "value": "$50,000",
+      "action": "RETAINED_AS_PRIMARY",
+      "target_candidate_id": "cand_004",
+      "reason": "Retained as primary normalized entry for field 'Total Fee Amount' with value '$50,000'",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_003"
+    },
+    {
+      "raw_candidate_id": "cand_005",
+      "candidate_name": "DocuSign Envelope ID",
+      "value": "23386EAF-0D11",
+      "action": "RETAINED_AS_PRIMARY",
+      "target_candidate_id": "cand_005",
+      "reason": "Retained as primary normalized entry for field 'DocuSign Envelope ID' with value '23386EAF-0D11'",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001"
+    }
+  ]
+}

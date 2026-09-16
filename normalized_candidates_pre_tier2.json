@@ -1,0 +1,57 @@
+[
+  {
+    "candidate_id": "cand_001",
+    "candidate_name": "Client Name",
+    "value": "Acme Corp",
+    "evidence": "Client: Acme Corp",
+    "page_numbers": [
+      1
+    ],
+    "segment_id": "seg_001",
+    "category_hint": "Parties"
+  },
+  {
+    "candidate_id": "cand_002",
+    "candidate_name": "Page Number",
+    "value": "Page 1 of 10",
+    "evidence": "Page 1 of 10",
+    "page_numbers": [
+      1
+    ],
+    "segment_id": "seg_001",
+    "category_hint": "Header"
+  },
+  {
+    "candidate_id": "cand_003",
+    "candidate_name": "Fee Structure",
+    "value": "$50,000",
+    "evidence": "Total Fee: $50,000",
+    "page_numbers": [
+      2
+    ],
+    "segment_id": "seg_002",
+    "category_hint": "Financials"
+  },
+  {
+    "candidate_id": "cand_004",
+    "candidate_name": "Total Fee Amount",
+    "value": "$50,000",
+    "evidence": "Fee Amount: $50,000",
+    "page_numbers": [
+      3
+    ],
+    "segment_id": "seg_003",
+    "category_hint": "Financials"
+  },
+  {
+    "candidate_id": "cand_005",
+    "candidate_name": "DocuSign Envelope ID",
+    "value": "23386EAF-0D11",
+    "evidence": "DocuSign Envelope ID: 23386EAF-0D11",
+    "page_numbers": [
+      1
+    ],
+    "segment_id": "seg_001",
+    "category_hint": "Identifiers"
+  }
+]

@@ -1,0 +1,531 @@
+{
+  "pdf_document": "C:\\Users\\dell\\Desktop\\document POC\\documents\\1003476642_TAXEL_2839_Annotated_Billing_Frequency_Milestone_Payment_Terms (1).Pdf",
+  "tier1_total_candidates": 37,
+  "tier2_status": "success",
+  "tier2_summary": {
+    "total_evaluated": 37,
+    "kept_count": 15,
+    "merged_count": 7,
+    "rejected_count": 15
+  },
+  "selections": [
+    {
+      "candidate_id": "cand_ea0ce203",
+      "candidate_name": "Telephone Number",
+      "value": "+1 213 972 4000",
+      "evidence": "Telephone +1 213 972 4000 Suite 1500",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "REJECT",
+      "reason": "Incidental contact detail; not core business terms like fees, dates, or parties.",
+      "suggested_canonical_name": "Vendor Phone Number",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_145d9b3d",
+      "candidate_name": "Fax Number",
+      "value": "+1 213 622 1217",
+      "evidence": "Fax +1 213 622 1217",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "REJECT",
+      "reason": "Incidental contact detail; not core business terms.",
+      "suggested_canonical_name": "Vendor Fax Number",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_75af74dc",
+      "candidate_name": "KPMG Office Address",
+      "value": "550 South Hope Street Los Angeles, CA 90071-2629",
+      "evidence": "550 South Hope Street Los Angeles, CA 90071-2629",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "REJECT",
+      "reason": "Incidental contact detail; not core business terms.",
+      "suggested_canonical_name": "Vendor Address",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_bc1e42df",
+      "candidate_name": "KPMG Website",
+      "value": "kpmg.com",
+      "evidence": "kpmg.com",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "REJECT",
+      "reason": "Incidental contact detail; not core business terms.",
+      "suggested_canonical_name": "Vendor Website",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_ec3cc490",
+      "candidate_name": "Client Name",
+      "value": "Rivian Automotive, LLC",
+      "evidence": "Rivian Automotive, LLC 14600 Myford Road Irvine, CA 92606",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "KEEP",
+      "reason": "Identifies the primary client party (Rivian Automotive, LLC).",
+      "suggested_canonical_name": "Client Name",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_93c8dee1",
+      "candidate_name": "Client Address",
+      "value": "14600 Myford Road Irvine, CA 92606",
+      "evidence": "Rivian Automotive, LLC 14600 Myford Road Irvine, CA 92606",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "REJECT",
+      "reason": "Incidental contact detail; not core business terms.",
+      "suggested_canonical_name": "Client Address",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_e2220423",
+      "candidate_name": "Client Contact",
+      "value": "Victoria Smith Director, Global Mobility",
+      "evidence": "Attention: Victoria Smith Director, Global Mobility",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "KEEP",
+      "reason": "Identifies the specific point of contact and role (Victoria Smith, Director, Global Mobility) for the engagement.",
+      "suggested_canonical_name": "Client Primary Contact",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_2acad526",
+      "candidate_name": "Effective Date",
+      "value": "December 20, 2024",
+      "evidence": "dated as of December 20, 2024 (the \"Effective Date\")",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "KEEP",
+      "reason": "Critical date establishing when the agreement becomes effective.",
+      "suggested_canonical_name": "Effective Date",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_df2e89c9",
+      "candidate_name": "Scope of Services Description",
+      "value": "tax compliance and tax consulting services listed in Appendix I",
+      "evidence": "We will provide the tax compliance and tax consulting services listed in Appendix I.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "KEEP",
+      "reason": "Defines the core services provided (tax compliance and consulting).",
+      "suggested_canonical_name": "Scope of Services",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_9ce0e0e7",
+      "candidate_name": "Addendum Incorporated",
+      "value": "Global Data Processing Addendum attached hereto as Addendum IV",
+      "evidence": "The Parties hereby agree that the Global Data Processing Addendum attached hereto as Addendum IV shall be incorporated into and made a part of the Engagement Letter.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "KEEP",
+      "reason": "Identifies a key legal document (Global Data Processing Addendum) incorporated into the agreement.",
+      "suggested_canonical_name": "Incorporated Addendum",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_75b09bbc",
+      "candidate_name": "KPI Appendix Reference",
+      "value": "Appendix III",
+      "evidence": "The Parties hereby agree that the ... Scope of Services in Appendix I of the Engagement Letter to include the Key Performance Indicators (\"KPI's\") and scope attached herein Appendix III.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001",
+      "decision": "REJECT",
+      "reason": "Structural reference to an appendix; the specific KPIs are likely detailed elsewhere or are operational metrics rather than core contract terms.",
+      "suggested_canonical_name": "KPI Appendix Reference",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_03d740fc",
+      "candidate_name": "Provided Service",
+      "value": "individual income tax organizer(s)",
+      "evidence": "We will provide your mobile employees with individual income tax organizer(s) designed to assist them in gathering the information needed to prepare their foreign and domestic income tax returns.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "MERGE",
+      "reason": "Specific detail of the service (tax organizers) falls under the general Scope of Services defined in cand_df2e89c9.",
+      "suggested_canonical_name": "Scope of Services",
+      "merge_into_candidate_id": "cand_df2e89c9"
+    },
+    {
+      "candidate_id": "cand_f083ffb3",
+      "candidate_name": "Target Audience",
+      "value": "mobile employees",
+      "evidence": "We will provide your mobile employees with individual income tax organizer(s) designed to assist them in gathering the information needed to prepare their foreign and domestic income tax returns.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "REJECT",
+      "reason": "Operational detail describing who uses the service, not a core contractual term like party, fee, or date.",
+      "suggested_canonical_name": "Target Audience",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_23dc23e6",
+      "candidate_name": "Purpose of Service",
+      "value": "to assist them in gathering the information needed to prepare their foreign and domestic income tax returns",
+      "evidence": "We will provide your mobile employees with individual income tax organizer(s) designed to assist them in gathering the information needed to prepare their foreign and domestic income tax returns.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "REJECT",
+      "reason": "Descriptive text explaining the utility of the service; not a distinct business term.",
+      "suggested_canonical_name": "Purpose of Service",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_d4109610",
+      "candidate_name": "Employee Responsibility",
+      "value": "review their information carefully to ensure that it is complete and accurate",
+      "evidence": "Your employees should review their information carefully to ensure that it is complete and accurate.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "REJECT",
+      "reason": "General operational instruction/boilerplate regarding data accuracy, not a core liability or fee term.",
+      "suggested_canonical_name": "Employee Responsibility",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_d502aeba",
+      "candidate_name": "Verification Limitation",
+      "value": "We will not audit or independently verify the data submitted by Client or the individual taxpayer",
+      "evidence": "We will not audit or independently verify the data submitted by Client or the individual taxpayer.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "REJECT",
+      "reason": "Standard limitation of liability/boilerplate clause regarding data verification.",
+      "suggested_canonical_name": "Verification Limitation",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_c8bbea61",
+      "candidate_name": "Clarification Provision",
+      "value": "We may however, ask for clarification of some of the information, where necessary",
+      "evidence": "We may however, ask for clarification of some of the information, where necessary.",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "REJECT",
+      "reason": "Minor operational provision; not a core business term.",
+      "suggested_canonical_name": "Clarification Provision",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_72676bb1",
+      "candidate_name": "Engagement Limitation",
+      "value": "Our engagement cannot be relied on to uncover errors, omissions, or irregularities, should any exist in the underlying information provided by the company",
+      "evidence": "Our engagement cannot be relied on to uncover errors, omissions, or irregularities, should any exist in the underlying information provided by the company",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "REJECT",
+      "reason": "Standard limitation of liability/boilerplate clause regarding error detection.",
+      "suggested_canonical_name": "Engagement Limitation",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_a8a8dbd1",
+      "candidate_name": "Docusign Envelope ID",
+      "value": "23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "evidence": "Docusign Envelope ID: 23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002",
+      "decision": "KEEP",
+      "reason": "Unique document identifier for the electronic signature envelope.",
+      "suggested_canonical_name": "Docusign Envelope ID",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_ba7cc673",
+      "candidate_name": "Fee Basis",
+      "value": "based upon the attached fee schedule",
+      "evidence": "Our fees for this engagement will be based upon the attached fee schedule.",
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003",
+      "decision": "KEEP",
+      "reason": "Establishes that fees are based on the attached schedule, a key financial term.",
+      "suggested_canonical_name": "Fee Basis",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_92fffc33",
+      "candidate_name": "Docusign Envelope ID",
+      "value": "23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "evidence": "Docusign Envelope ID: 23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003",
+      "decision": "MERGE",
+      "reason": "Duplicate identifier found on a different page.",
+      "suggested_canonical_name": "Docusign Envelope ID",
+      "merge_into_candidate_id": "cand_a8a8dbd1"
+    },
+    {
+      "candidate_id": "cand_574f1a78",
+      "candidate_name": "Large Private Entity Revenue Threshold",
+      "value": "$300 million",
+      "evidence": "private entities with prior year gross revenues of $300 million or more",
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003",
+      "decision": "REJECT",
+      "reason": "Contextual definition for regulatory standards; not a specific term of this engagement.",
+      "suggested_canonical_name": "Large Private Entity Revenue Threshold",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_a8fc5001",
+      "candidate_name": "Example State with More Stringent Standards",
+      "value": "New York",
+      "evidence": "The laws of some states (e.g., New York) also may impose more stringent return preparation standards",
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003",
+      "decision": "REJECT",
+      "reason": "Illustrative example in legal text; not a binding term of the contract.",
+      "suggested_canonical_name": "Example State with More Stringent Standards",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_734471f5",
+      "candidate_name": "Progress billing amount upon receipt of authorized assignee list and distribution of U.S. income tax organizer",
+      "value": "25% of estimated fee",
+      "evidence": "Upon receipt of authorized assignee list and distribution of U.S. income tax organizer to authorized assignees 25% of estimated fee",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "KEEP",
+      "reason": "Specific payment milestone (25% of estimated fee) tied to a deliverable.",
+      "suggested_canonical_name": "Progress Billing Milestone 1",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_b01080e7",
+      "candidate_name": "Progress billing amount upon receipt of completed tax organizer",
+      "value": "25% of estimated fee",
+      "evidence": "On receipt of the completed tax organizer 25% of estimated fee",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "KEEP",
+      "reason": "Specific payment milestone (25% of estimated fee) tied to a deliverable.",
+      "suggested_canonical_name": "Progress Billing Milestone 2",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_3a567136",
+      "candidate_name": "Progress billing amount upon delivery of the tax return",
+      "value": "Remaining 50% of fee",
+      "evidence": "Upon Delivery of the Tax Return Remaining 50% of fee",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "KEEP",
+      "reason": "Specific payment milestone (Remaining 50% of fee) tied to final delivery.",
+      "suggested_canonical_name": "Progress Billing Milestone 3",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_d96a5d1b",
+      "candidate_name": "Payment due period",
+      "value": "no later than 60 days form the invoice date",
+      "evidence": "Client agrees to pay properly submitted, undisputed invoices upon receipt, no later than 60 days form the invoice date.",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "KEEP",
+      "reason": "Defines the payment deadline (60 days from invoice date).",
+      "suggested_canonical_name": "Payment Terms",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_6e0c7a76",
+      "candidate_name": "Tax compliance billing percentage per authorized assignee",
+      "value": "25% of the estimated compliance work",
+      "evidence": "KPMG will bill Rivian 25% of the estimated compliance work for each authorized assignee (tax return and equalization) at the time an individual is authorized by Rivian for the tax compliance services.",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "KEEP",
+      "reason": "Defines the billing mechanism for compliance work (25% per assignee).",
+      "suggested_canonical_name": "Compliance Billing Percentage",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_e14ac858",
+      "candidate_name": "Non-refundable compliance fee condition",
+      "value": "the 25% fee for the estimated compliance work is not refundable",
+      "evidence": "the 25% fee for the estimated compliance work is not refundable.",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "KEEP",
+      "reason": "Critical financial term specifying that the initial 25% fee is non-refundable.",
+      "suggested_canonical_name": "Non-Refundable Fee Condition",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_8bf7c851",
+      "candidate_name": "Access removal timeframe for KPMG-hosted tools",
+      "value": "within a reasonable time (no less frequently than annually) once the engagement is completed",
+      "evidence": "Access to KPMG-hosted tools related to the services provided as part of this engagement contract will be removed or become unavailable within a reasonable time (no less frequently than annually) once the engagement is completed.",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "REJECT",
+      "reason": "Operational IT/security detail; not a core business term like fee or date.",
+      "suggested_canonical_name": "Access Removal Timeframe",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_299d546b",
+      "candidate_name": "Docusign Envelope ID",
+      "value": "23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "evidence": "Docusign Envelope ID: 23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004",
+      "decision": "MERGE",
+      "reason": "Duplicate identifier found on a different page.",
+      "suggested_canonical_name": "Docusign Envelope ID",
+      "merge_into_candidate_id": "cand_a8a8dbd1"
+    },
+    {
+      "candidate_id": "cand_e11440a5",
+      "candidate_name": "Party - KPMG LLP",
+      "value": "KPMG LLP",
+      "evidence": "The Modified Terms and Conditions for Advisory and Tax Services between KPMG LLP and Rivian Automotive, LLC, are made part of the Agreement.",
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005",
+      "decision": "KEEP",
+      "reason": "Identifies the primary vendor party (KPMG LLP).",
+      "suggested_canonical_name": "Vendor Name",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_58d4a0f1",
+      "candidate_name": "Party - Rivian Automotive, LLC",
+      "value": "Rivian Automotive, LLC",
+      "evidence": "The Modified Terms and Conditions for Advisory and Tax Services between KPMG LLP and Rivian Automotive, LLC, are made part of the Agreement.",
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005",
+      "decision": "MERGE",
+      "reason": "Duplicate identification of the client party already captured in cand_ec3cc490.",
+      "suggested_canonical_name": "Client Name",
+      "merge_into_candidate_id": "cand_ec3cc490"
+    },
+    {
+      "candidate_id": "cand_e98f5055",
+      "candidate_name": "Engagement Period",
+      "value": "December 23, 2024 through December 31, 2027",
+      "evidence": "this Engagement Letter is intended to apply for the period of December 23, 2024 through December 31, 2027, and expires three (3) months after December 31, 2027.",
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005",
+      "decision": "KEEP",
+      "reason": "Defines the start and end dates of the contract term.",
+      "suggested_canonical_name": "Engagement Period",
+      "merge_into_candidate_id": null
+    },
+    {
+      "candidate_id": "cand_54db2443",
+      "candidate_name": "Expiration After Period End",
+      "value": "expires three (3) months after December 31, 2027",
+      "evidence": "this Engagement Letter is intended to apply for the period of December 23, 2024 through December 31, 2027, and expires three (3) months after December 31, 2027.",
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005",
+      "decision": "MERGE",
+      "reason": "The expiration detail is part of the overall engagement period definition.",
+      "suggested_canonical_name": "Engagement Period",
+      "merge_into_candidate_id": "cand_e98f5055"
+    },
+    {
+      "candidate_id": "cand_cfd73878",
+      "candidate_name": "Docusign Envelope ID",
+      "value": "23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "evidence": "Docusign Envelope ID: 23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005",
+      "decision": "MERGE",
+      "reason": "Duplicate identifier found on a different page.",
+      "suggested_canonical_name": "Docusign Envelope ID",
+      "merge_into_candidate_id": "cand_a8a8dbd1"
+    },
+    {
+      "candidate_id": "cand_03a9736f",
+      "candidate_name": "Scope of Services",
+      "value": "Advisory and Tax Services",
+      "evidence": "The Modified Terms and Conditions for Advisory and Tax Services between KPMG LLP and Rivian Automotive, LLC, are made part of the Agreement.",
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005",
+      "decision": "MERGE",
+      "reason": "Duplicate concept of the scope of services already defined in cand_df2e89c9.",
+      "suggested_canonical_name": "Scope of Services",
+      "merge_into_candidate_id": "cand_df2e89c9"
+    }
+  ]
+}

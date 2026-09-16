@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract AI — Enterprise PDF Extraction Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --accent-primary: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #ef4444;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      padding: 2rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent-primary), #8b5cf6);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge {
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #818cf8;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Upload Zone */
+    .upload-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 2px dashed var(--bg-card-border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .upload-card:hover,
+    .upload-card.dragover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .upload-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-primary);
+      font-size: 2rem;
+    }
+
+    .upload-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, var(--accent-success), #059669);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Progress & Dashboard */
+    .dashboard {
+      display: none;
+      gap: 2rem;
+      flex-direction: column;
+    }
+
+    .dashboard.active {
+      display: flex;
+    }
+
+    /* Pipeline Status Tracker */
+    .status-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .step-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .step-box.active {
+      border-color: var(--accent-primary);
+      background: rgba(99, 102, 241, 0.05);
+    }
+
+    .step-box.completed {
+      border-color: var(--accent-success);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .step-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-box.active .step-name {
+      color: var(--accent-primary);
+    }
+
+    .step-box.completed .step-name {
+      color: var(--accent-success);
+    }
+
+    .step-msg {
+      font-size: 0.8rem;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-success));
+      transition: width 0.4s ease;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-top: 0.25rem;
+      font-family: var(--font-mono);
+    }
+
+    /* Results Table */
+    .results-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .table-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .search-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--bg-card-border);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 0.9rem;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .field-name {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .field-val {
+      font-family: var(--font-mono);
+      color: #e2e8f0;
+      max-width: 350px;
+      word-break: break-word;
+    }
+
+    .conf-badge {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .conf-high {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .conf-med {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .conf-low {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+    }
+
+    .status-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+
+    .status-accepted {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .status-flagged {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .page-tag {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+    }
+
+    .pulse {
+      animation: pulse-animation 1.5s infinite;
+    }
+
+    @keyframes pulse-animation {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <div class="brand-title">Extraction Engine</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Grounded Field Extraction System</div>
+        </div>
+      </div>
+      <div class="badge"></div>
+    </header>
+
+    <!-- File Upload Section -->
+    <div class="upload-card" id="dropZone">
+      <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+      <div class="upload-icon">📄</div>
+      <div class="upload-title">Drop your PDF document here</div>
+      <div class="upload-subtitle"></div>
+      <button class="btn" onclick="document.getElementById('fileInput').click()">Select PDF File</button>
+    </div>
+
+    <!-- Live Extraction Dashboard -->
+    <div class="dashboard" id="dashboard">
+
+      <!-- Status & Steps -->
+      <div class="status-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-weight: 700; font-size: 1rem;" id="docTitle">Processing Document...</div>
+          <div id="liveStatusText" class="pulse"
+            style="font-size: 0.85rem; color: var(--accent-primary); font-weight: 600;">Initializing...</div>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+
+        <div class="pipeline-steps">
+          <div class="step-box" id="step1">
+            <div class="step-name">1. Ingestion</div>
+            <div class="step-msg" id="step1Msg">Waiting...</div>
+          </div>
+          <div class="step-box" id="step2">
+            <div class="step-name">2. Preprocessing & PII</div>
+            <div class="step-msg" id="step2Msg">Waiting...</div>
+          </div>
+          <div class="step-box" id="step3">
+            <div class="step-name">3. AI Segmentation</div>
+            <div class="step-msg" id="step3Msg">Waiting...</div>
+          </div>
+          <div class="step-box" id="step4">
+            <div class="step-name">4. AI Field Discovery</div>
+            <div class="step-msg" id="step4Msg">Waiting...</div>
+          </div>
+          <div class="step-box" id="step5">
+            <div class="step-name">5. Grounding & Report</div>
+            <div class="step-msg" id="step5Msg">Waiting...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Unique Fields Extracted</div>
+          <div class="stat-value" id="statFields">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Grounding Precision</div>
+          <div class="stat-value" id="statPrecision" style="color: var(--accent-success);">--%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Segments Processed</div>
+          <div class="stat-value" id="statSegments">0 / 0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Excel Report</div>
+          <div style="margin-top: 0.5rem;" id="downloadArea">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Generating...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extracted Fields Live Table -->
+      <div class="results-card">
+        <div class="table-header">
+          <div class="table-title">Extracted Business Fields (Live Stream)</div>
+          <div class="table-actions">
+            <input type="text" class="search-input" id="tableSearch" placeholder="Filter fields or values..."
+              oninput="filterTable()">
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Field Name</th>
+              <th>Extracted Value</th>
+              <th>Confidence</th>
+              <th>Status</th>
+              <th>Evidence / Context</th>
+            </tr>
+          </thead>
+          <tbody id="fieldsTableBody">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                Field discovery in progress. Discovered fields will populate here in real-time.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const dashboard = document.getElementById('dashboard');
+
+    let allDiscoveredFields = [];
+
+    // Drag and Drop handlers
+    ['dragenter', 'dragover'].forEach(name => {
+      dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(name => {
+      dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }, false);
+    });
+    dropZone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length) handleFileUpload(files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (fileInput.files.length) handleFileUpload(fileInput.files[0]);
+    });
+
+    async function handleFileUpload(file) {
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Please upload a valid PDF document.');
+        return;
+      }
+
+      // Show Dashboard
+      dashboard.classList.add('active');
+      document.getElementById('docTitle').innerText = file.name;
+      dropZone.style.display = 'none';
+
+      // Reset Table & Stats
+      allDiscoveredFields = [];
+      document.getElementById('fieldsTableBody').innerHTML = '';
+      document.getElementById('statFields').innerText = '0';
+      document.getElementById('statPrecision').innerText = '--%';
+      document.getElementById('statSegments').innerText = '0 / 0';
+      document.getElementById('progressBar').style.width = '5%';
+
+      // Upload API
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const res = await fetch('/api/upload', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.status === 'success') {
+          startStreaming(data.doc_id);
+        } else {
+          alert('Upload failed: ' + data.detail);
+        }
+      } catch (err) {
+        alert('Error uploading file: ' + err.message);
+      }
+    }
+
+    function startStreaming(docId) {
+      const eventSource = new EventSource(`/api/stream/${docId}`);
+
+      eventSource.addEventListener('status', (e) => {
+        const data = JSON.parse(e.data);
+        updateStatusStep(data);
+      });
+
+      eventSource.addEventListener('extraction_progress', (e) => {
+        const data = JSON.parse(e.data);
+        document.getElementById('statSegments').innerText = `${data.current} / ${data.total}`;
+        const pct = Math.min(85, 30 + Math.round((data.current / data.total) * 55));
+        document.getElementById('progressBar').style.width = `${pct}%`;
+        document.getElementById('step4Msg').innerText = `Segment ${data.current}/${data.total}`;
+      });
+
+      eventSource.addEventListener('fields_batch', (e) => {
+        const data = JSON.parse(e.data);
+        data.fields.forEach(f => {
+          allDiscoveredFields.push({
+            field_name: f.field_name,
+            value: f.value,
+            confidence: f.confidence,
+            evidence: f.evidence || '',
+            validation_status: f.confidence >= 0.85 ? 'accepted' : 'flagged'
+          });
+        });
+        renderTable(allDiscoveredFields);
+        document.getElementById('statFields').innerText = allDiscoveredFields.length;
+      });
+
+      eventSource.addEventListener('complete', (e) => {
+        const data = JSON.parse(e.data);
+        eventSource.close();
+
+        // Final UI Updates
+        document.getElementById('progressBar').style.width = '100%';
+        document.getElementById('liveStatusText').innerText = '✓ Complete';
+        document.getElementById('liveStatusText').classList.remove('pulse');
+        document.getElementById('liveStatusText').style.color = 'var(--accent-success)';
+
+        document.getElementById('statFields').innerText = data.total_fields;
+        document.getElementById('statPrecision').innerText = `${Math.round(data.precision * 100)}%`;
+
+        // Download button
+        document.getElementById('downloadArea').innerHTML = `
+          <a href="${data.excel_download_url}" class="btn btn-success" style="font-size: 0.85rem; padding: 0.5rem 1rem;" download>
+            ⬇ Download Excel
+          </a>
+        `;
+
+        // Render consolidated final fields
+        renderTable(data.final_fields);
+        setStepCompleted('step5', 'Excel Ready');
+      });
+
+      eventSource.addEventListener('error', (e) => {
+        eventSource.close();
+        document.getElementById('liveStatusText').innerText = '✖ Pipeline Error';
+        document.getElementById('liveStatusText').style.color = 'var(--accent-danger)';
+      });
+    }
+
+    function updateStatusStep(data) {
+      document.getElementById('liveStatusText').innerText = data.msg;
+
+      if (data.phase === 1) {
+        setStepActive('step1');
+        document.getElementById('step1Msg').innerText = data.msg;
+        if (data.step === 'ingestion_done') setStepCompleted('step1', `${data.total_pages} Pages`);
+      } else if (data.phase === 2 || data.phase === 3) {
+        setStepActive('step2');
+        document.getElementById('step2Msg').innerText = data.msg;
+        if (data.step === 'masking_done') setStepCompleted('step2', 'PII Masked');
+      } else if (data.phase === 4) {
+        setStepActive('step3');
+        document.getElementById('step3Msg').innerText = `${data.total_segments} Chunks`;
+        setStepCompleted('step3', `${data.total_segments} Chunks`);
+      } else if (data.phase === 5) {
+        setStepActive('step4');
+        if (data.step === 'extraction_done') setStepCompleted('step4', 'Done');
+      } else if (data.phase === 6 || data.phase === 7) {
+        setStepActive('step5');
+        document.getElementById('step5Msg').innerText = data.msg;
+      }
+    }
+
+    function setStepActive(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function setStepCompleted(id, msg) {
+      const el = document.getElementById(id);
+      el.classList.remove('active');
+      el.classList.add('completed');
+      if (msg) el.querySelector('.step-msg').innerText = msg;
+    }
+
+    function renderTable(fields) {
+      const tbody = document.getElementById('fieldsTableBody');
+      if (!fields || fields.length === 0) return;
+
+      tbody.innerHTML = fields.map((f, idx) => {
+        const confPct = Math.round(f.confidence * 100);
+        const confClass = confPct >= 85 ? 'conf-high' : confPct >= 70 ? 'conf-med' : 'conf-low';
+        const evidenceText = f.evidence || f.best_evidence || '--';
+        const status = f.validation_status || 'accepted';
+        const statusClass = status === 'accepted' ? 'status-accepted' : 'status-flagged';
+
+        return `
+          <tr>
+            <td style="color: var(--text-muted); font-family: var(--font-mono);">${idx + 1}</td>
+            <td class="field-name">${escapeHtml(f.field_name)}</td>
+            <td class="field-val">${escapeHtml(f.value)}</td>
+            <td><span class="conf-badge ${confClass}">${confPct}%</span></td>
+            <td><span class="status-tag ${statusClass}">${status}</span></td>
+            <td style="font-size: 0.8rem; color: var(--text-muted); max-width: 320px; font-style: italic;">"${escapeHtml(evidenceText)}"</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterTable() {
+      const q = document.getElementById('tableSearch').value.toLowerCase();
+      const filtered = allDiscoveredFields.filter(f =>
+        f.field_name.toLowerCase().includes(q) || f.value.toLowerCase().includes(q)
+      );
+      renderTable(filtered);
+    }
+
+    function escapeHtml(str) {
+      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,590 @@
+{
+  "pdf_document": "1003476642_TAXEL_2839_Annotated_Billing_Frequency_Milestone_Payment_Terms (1).Pdf",
+  "total_segments_processed": 51,
+  "tier1_raw_candidates": 189,
+  "tier1_normalized_candidates": 32,
+  "tier2_counts": {
+    "KEEP": 21,
+    "MERGE": 0,
+    "REJECT": 10,
+    "REVIEW": 1
+  },
+  "all_selections": [
+    {
+      "candidate_id": "cand_610af40d",
+      "candidate_name": "Client Name",
+      "value": "Rivian Automotive, LLC",
+      "suggested_canonical_name": "Client_Name",
+      "decision": "KEEP",
+      "reason": "Binds contracting party Rivian Automotive, LLC to engagement terms from page(s) [1]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_78a01e1a",
+      "candidate_name": "Effective Date",
+      "value": "December 20, 2024",
+      "suggested_canonical_name": "Contract_Effective_Date",
+      "decision": "KEEP",
+      "reason": "Establishes legal commencement date of agreement (December 20, 2024) from page(s) [1]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_19f2f65e",
+      "candidate_name": "Engagement Period",
+      "value": "January 1, 2025 through December 31, 2025",
+      "suggested_canonical_name": "Engagement_Period",
+      "decision": "KEEP",
+      "reason": "Defines contractual performance timeframe (January 1, 2025 through December 31, 2025) from page(s) [1, 2, 4, 7, 11, 13, 19, 20, 30, 31, 32, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        2,
+        4,
+        7,
+        11,
+        13,
+        19,
+        20,
+        30,
+        31,
+        32,
+        34,
+        35,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_e53765de",
+      "candidate_name": "Document Type",
+      "value": "Engagement Letter",
+      "suggested_canonical_name": "Document_Type",
+      "decision": "KEEP",
+      "reason": "Classifies legal agreement structure as Engagement Letter from page(s) [1, 4, 30, 32, 34, 39, 40, 41, 42, 44, 45]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        4,
+        30,
+        32,
+        34,
+        39,
+        40,
+        41,
+        42,
+        44,
+        45
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_79910072",
+      "candidate_name": "Scope of Services Description",
+      "value": "tax compliance and tax consulting services",
+      "suggested_canonical_name": "Scope_of_Services",
+      "decision": "KEEP",
+      "reason": "Defines primary deliverable scope: tax compliance and consulting services from page(s) [1, 2, 3, 5, 6, 7, 9, 10, 25]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        25
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_d5d296ac",
+      "candidate_name": "Appendix I Reference",
+      "value": "Appendix I",
+      "suggested_canonical_name": "Appendix I Reference",
+      "decision": "REJECT",
+      "reason": "Generic structural reference to appendix; scope captured in core deliverable term",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        5,
+        6,
+        11,
+        26,
+        30
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_24ed8547",
+      "candidate_name": "Key Performance Indicators Identifier",
+      "value": "Key Performance Indicators",
+      "suggested_canonical_name": "Key Performance Indicators Identifier",
+      "decision": "REJECT",
+      "reason": "Generic term definition rather than specific engagement metric",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        26
+      ],
+      "segment_id": "seg_001"
+    },
+    {
+      "candidate_id": "cand_c65f6cad",
+      "candidate_name": "Docusign Envelope Identifier",
+      "value": "23386EAF-0D11-4D41-A8AA-0A7AA042E109",
+      "suggested_canonical_name": "Docusign_Envelope_ID",
+      "decision": "REVIEW",
+      "reason": "System-generated electronic signature tracking ID; substantive business relevance is ambiguous",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_907af713",
+      "candidate_name": "Payment Terms",
+      "value": "Net 30 days upon receipt of invoice",
+      "suggested_canonical_name": "Payment_Terms",
+      "decision": "KEEP",
+      "reason": "Defines mandatory billing and payment schedule (Net 30 days upon receipt of invoice) from page(s) [1, 2, 7, 8, 9, 11, 12, 13, 14, 19, 22, 23, 24, 27, 29, 40, 41, 42, 44, 45]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        2,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        19,
+        22,
+        23,
+        24,
+        27,
+        29,
+        40,
+        41,
+        42,
+        44,
+        45
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_e2c30fb2",
+      "candidate_name": "Service Provided",
+      "value": "individual income tax organizer(s)",
+      "suggested_canonical_name": "Tax_Organizer_Service_Deliverable",
+      "decision": "KEEP",
+      "reason": "Details specific contractual deliverable: individual income tax organizer(s) from page(s) [1, 2, 3, 26, 27]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        2,
+        3,
+        26,
+        27
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_d2366dc7",
+      "candidate_name": "Audit Limitation",
+      "value": "We will not audit or independently verify data",
+      "suggested_canonical_name": "Audit_Limitation_Clause",
+      "decision": "KEEP",
+      "reason": "Specifies explicit liability limitation: firm will not independently verify client-provided data from page(s) [1, 3]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        3
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_ef57269e",
+      "candidate_name": "Fee Amount",
+      "value": "USD 43,500",
+      "suggested_canonical_name": "Fee_Amount_USD_43,500",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 43,500) for specific engagement scope on page(s) [1, 3, 5, 6, 7, 8, 11, 12, 14, 18, 19, 20, 21, 25, 27, 28, 29, 40, 41, 43, 45]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12,
+        14,
+        18,
+        19,
+        20,
+        21,
+        25,
+        27,
+        28,
+        29,
+        40,
+        41,
+        43,
+        45
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_fecd08c3",
+      "candidate_name": "Fee Basis",
+      "value": "attached fee schedule",
+      "suggested_canonical_name": "Fee_Structure_Basis",
+      "decision": "KEEP",
+      "reason": "Defines compensation structure based on attached fee schedule from page(s) [1, 3, 5, 6, 7, 8, 11, 12, 14, 18, 19, 20, 21, 25, 27, 28, 29, 40, 41, 43, 45]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12,
+        14,
+        18,
+        19,
+        20,
+        21,
+        25,
+        27,
+        28,
+        29,
+        40,
+        41,
+        43,
+        45
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_0251c363",
+      "candidate_name": "Clarification Request Clause",
+      "value": "ask for clarification",
+      "suggested_canonical_name": "Clarification Request Clause",
+      "decision": "REJECT",
+      "reason": "Generic operational background statement",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        1
+      ],
+      "segment_id": "seg_002"
+    },
+    {
+      "candidate_id": "cand_c7481c05",
+      "candidate_name": "Page Number",
+      "value": "Page 2 of 5",
+      "suggested_canonical_name": "Page Number",
+      "decision": "REJECT",
+      "reason": "Pagination structural noise",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003"
+    },
+    {
+      "candidate_id": "cand_2485bb2f",
+      "candidate_name": "Fee Amount",
+      "value": "$300",
+      "suggested_canonical_name": "Fee_Amount_300",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment ($300) for specific engagement scope on page(s) [2]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003"
+    },
+    {
+      "candidate_id": "cand_9534e348",
+      "candidate_name": "Large Private Entity Revenue Threshold",
+      "value": "$300 million or more",
+      "suggested_canonical_name": "Large Private Entity Revenue Threshold",
+      "decision": "REJECT",
+      "reason": "Generic regulatory definition/threshold, not an applicable engagement obligation",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        2
+      ],
+      "segment_id": "seg_003"
+    },
+    {
+      "candidate_id": "cand_dab4bb07",
+      "candidate_name": "Tax Shelter Legal Citation",
+      "value": "IRC \u00a7 6662(d)(2)(C)(ii)",
+      "suggested_canonical_name": "Tax Shelter Legal Citation",
+      "decision": "REJECT",
+      "reason": "Generic statutory legal citation background reference",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        2,
+        39,
+        45
+      ],
+      "segment_id": "seg_003"
+    },
+    {
+      "candidate_id": "cand_796ad762",
+      "candidate_name": "State Example with Stricter Standards",
+      "value": "New York",
+      "suggested_canonical_name": "State Example with Stricter Standards",
+      "decision": "REJECT",
+      "reason": "Illustrative example state name used in text explanation",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        2,
+        43,
+        44
+      ],
+      "segment_id": "seg_003"
+    },
+    {
+      "candidate_id": "cand_07d73ec2",
+      "candidate_name": "Page Number",
+      "value": "Page 3 of 5",
+      "suggested_canonical_name": "Page Number",
+      "decision": "REJECT",
+      "reason": "Pagination structural noise",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        3
+      ],
+      "segment_id": "seg_004"
+    },
+    {
+      "candidate_id": "cand_e3eee57e",
+      "candidate_name": "Page Number",
+      "value": "Page 4 of 5",
+      "suggested_canonical_name": "Page Number",
+      "decision": "REJECT",
+      "reason": "Pagination structural noise",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        4
+      ],
+      "segment_id": "seg_005"
+    },
+    {
+      "candidate_id": "cand_4dce292d",
+      "candidate_name": "Page Number",
+      "value": "Page 5 of 5",
+      "suggested_canonical_name": "Page Number",
+      "decision": "REJECT",
+      "reason": "Pagination structural noise",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        5,
+        6
+      ],
+      "segment_id": "seg_006"
+    },
+    {
+      "candidate_id": "cand_936bfb0d",
+      "candidate_name": "Fee Amount",
+      "value": "USD 518",
+      "suggested_canonical_name": "Fee_Amount_USD_518",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 518) for specific engagement scope on page(s) [11]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        11
+      ],
+      "segment_id": "seg_013"
+    },
+    {
+      "candidate_id": "cand_0bd799a8",
+      "candidate_name": "Fee Amount",
+      "value": "USD 12,000",
+      "suggested_canonical_name": "Fee_Amount_USD_12,000",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 12,000) for specific engagement scope on page(s) [13]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        13
+      ],
+      "segment_id": "seg_015"
+    },
+    {
+      "candidate_id": "cand_ad49aa4c",
+      "candidate_name": "Fee Amount",
+      "value": "USD 684",
+      "suggested_canonical_name": "Fee_Amount_USD_684",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 684) for specific engagement scope on page(s) [15]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        15
+      ],
+      "segment_id": "seg_017"
+    },
+    {
+      "candidate_id": "cand_823b3250",
+      "candidate_name": "Fee Amount",
+      "value": "USD 288",
+      "suggested_canonical_name": "Fee_Amount_USD_288",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 288) for specific engagement scope on page(s) [16]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        16
+      ],
+      "segment_id": "seg_018"
+    },
+    {
+      "candidate_id": "cand_4f5f48be",
+      "candidate_name": "Fee Amount",
+      "value": "USD 863",
+      "suggested_canonical_name": "Fee_Amount_USD_863",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 863) for specific engagement scope on page(s) [17]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        17
+      ],
+      "segment_id": "seg_019"
+    },
+    {
+      "candidate_id": "cand_d869af2b",
+      "candidate_name": "Fee Amount",
+      "value": "USD 805",
+      "suggested_canonical_name": "Fee_Amount_USD_805",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 805) for specific engagement scope on page(s) [22]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        22
+      ],
+      "segment_id": "seg_024"
+    },
+    {
+      "candidate_id": "cand_2c6e724a",
+      "candidate_name": "Fee Amount",
+      "value": "USD 1,937",
+      "suggested_canonical_name": "Fee_Amount_USD_1,937",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 1,937) for specific engagement scope on page(s) [23]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        23
+      ],
+      "segment_id": "seg_025"
+    },
+    {
+      "candidate_id": "cand_a80b7375",
+      "candidate_name": "Fee Amount",
+      "value": "USD 375",
+      "suggested_canonical_name": "Fee_Amount_USD_375",
+      "decision": "KEEP",
+      "reason": "Distinct financial fee commitment (USD 375) for specific engagement scope on page(s) [24]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        24
+      ],
+      "segment_id": "seg_026"
+    },
+    {
+      "candidate_id": "cand_4fb5ec20",
+      "candidate_name": "Addendum Identifier",
+      "value": "Addendum IV",
+      "suggested_canonical_name": "Addendum_Identifier",
+      "decision": "KEEP",
+      "reason": "Structural contractual label identifying incorporated Addendum IV from page(s) [30]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        30
+      ],
+      "segment_id": "seg_035"
+    },
+    {
+      "candidate_id": "cand_b74a1f70",
+      "candidate_name": "Addendum Title",
+      "value": "Global Data Processing Addendum",
+      "suggested_canonical_name": "Addendum_IV_Title",
+      "decision": "KEEP",
+      "reason": "Incorporates specific contractual addendum: Global Data Processing Addendum from page(s) [30]",
+      "merge_into_candidate_id": null,
+      "page_numbers": [
+        30
+      ],
+      "segment_id": "seg_035"
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "pdf_document": "1005210456_TAXEL_6575_Annotated_Payment_Terms (1).Pdf",
+  "pipeline_metrics": {
+    "total_pages": 18,
+    "total_segments": 5,
+    "tier1_raw_candidates": 24,
+    "tier1_normalized_candidates": 10,
+    "tier2_counts": {
+      "KEEP": 10,
+      "MERGE": 0,
+      "REJECT": 0,
+      "REVIEW": 0
+    },
+    "tier3_input_candidates": 10,
+    "tier3_canonical_fields_count": 9,
+    "tier3_consolidated_count": 8,
+    "tier3_flagged_count": 1
+  },
+  "tier3_canonical_output": [
+    {
+      "canonical_field_name": "Contract_Effective_Date",
+      "value": "January 22, 2026",
+      "evidence": "January 22, 2026",
+      "source_candidate_ids": [
+        "cand_406aabe7"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_406aabe7']",
+      "source_evidences": [
+        "January 22, 2026"
+      ]
+    },
+    {
+      "canonical_field_name": "Document_Type",
+      "value": "Engagement Letter",
+      "evidence": "Engagement Letter",
+      "source_candidate_ids": [
+        "cand_1d6f1b33"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_1d6f1b33']",
+      "source_evidences": [
+        "Engagement Letter"
+      ]
+    },
+    {
+      "canonical_field_name": "Scope_of_Services",
+      "value": "Tax Compliance Services",
+      "evidence": "Tax Compliance Services",
+      "source_candidate_ids": [
+        "cand_8a744b0a"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_8a744b0a']",
+      "source_evidences": [
+        "Tax Compliance Services"
+      ]
+    },
+    {
+      "canonical_field_name": "Engagement_Period",
+      "value": "Fiscal Year 2025 Engagement Period",
+      "evidence": "period covering Fiscal Year 2025 Engagement Period",
+      "source_candidate_ids": [
+        "cand_a3550993"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_a3550993']",
+      "source_evidences": [
+        "period covering Fiscal Year 2025 Engagement Period"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_43500",
+      "value": "USD 43,500",
+      "evidence": "USD 43,500",
+      "source_candidate_ids": [
+        "cand_9bec866a"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_9bec866a']",
+      "source_evidences": [
+        "USD 43,500"
+      ]
+    },
+    {
+      "canonical_field_name": "Audit_Limitation_Clause",
+      "value": "We will not audit or independently verify data",
+      "evidence": "We will not audit or independently verify data",
+      "source_candidate_ids": [
+        "cand_ca3b41df"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_ca3b41df']",
+      "source_evidences": [
+        "We will not audit or independently verify data"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_2300",
+      "value": "USD 2,300",
+      "evidence": "USD 2,300",
+      "source_candidate_ids": [
+        "cand_867a1866"
+      ],
+      "page_numbers": [
+        10,
+        11,
+        12
+      ],
+      "segment_ids": [
+        "seg_003"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_867a1866']",
+      "source_evidences": [
+        "USD 2,300"
+      ]
+    },
+    {
+      "canonical_field_name": "Client_Address",
+      "value": "16\n\nKPMG, Attachment A KPMG Standard Terms and Conditions",
+      "evidence": "16\n\nKPMG, Attachment A KPMG Standard Terms and Conditions",
+      "source_candidate_ids": [
+        "cand_af2c1e0d"
+      ],
+      "page_numbers": [
+        16,
+        17,
+        18
+      ],
+      "segment_ids": [
+        "seg_005"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_af2c1e0d']",
+      "source_evidences": [
+        "16\n\nKPMG, Attachment A KPMG Standard Terms and Conditions"
+      ]
+    },
+    {
+      "canonical_field_name": "Firm_Provider_Name",
+      "value": "KPMG Samjong Accounting Corp",
+      "evidence": "On behalf of KPMG Samjong Accounting Corp | KPMG LLP",
+      "source_candidate_ids": [
+        "cand_03b4cb0c",
+        "cand_e280ec1f"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        12
+      ],
+      "segment_ids": [
+        "seg_001",
+        "seg_003"
+      ],
+      "category_hint": "",
+      "confidence": 0.9,
+      "status": "conflicting_flagged",
+      "resolution_notes": "Conflicting values detected for field 'Firm / Provider Name': ['KPMG Samjong Accounting Corp', 'KPMG LLP']; flagged for review because document context does not establish a single value.",
+      "source_evidences": [
+        "On behalf of KPMG Samjong Accounting Corp",
+        "KPMG LLP"
+      ]
+    }
+  ]
+}

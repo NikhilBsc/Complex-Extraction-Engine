@@ -1,0 +1,566 @@
+{
+  "pdf_document": "1003476642_TAXEL_2839_Annotated_Billing_Frequency_Milestone_Payment_Terms (1).Pdf",
+  "pipeline_metrics": {
+    "total_pages": 46,
+    "total_segments": 51,
+    "tier1_raw_candidates": 189,
+    "tier1_normalized_candidates": 32,
+    "tier2_counts": {
+      "KEEP": 21,
+      "MERGE": 0,
+      "REJECT": 10,
+      "REVIEW": 1
+    },
+    "tier3_input_candidates": 21,
+    "tier3_canonical_fields_count": 21,
+    "tier3_consolidated_count": 21,
+    "tier3_flagged_count": 0
+  },
+  "tier3_canonical_output": [
+    {
+      "canonical_field_name": "Client_Name",
+      "value": "Rivian Automotive, LLC",
+      "evidence": "Client: Rivian Automotive, LLC",
+      "source_candidate_ids": [
+        "cand_ba6f2d63"
+      ],
+      "page_numbers": [
+        1
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Parties",
+      "confidence": 0.95,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_ba6f2d63']",
+      "source_evidences": [
+        "Client: Rivian Automotive, LLC"
+      ]
+    },
+    {
+      "canonical_field_name": "Contract_Effective_Date",
+      "value": "December 20, 2024",
+      "evidence": "Effective Date: December 20, 2024",
+      "source_candidate_ids": [
+        "cand_1b5c9bed"
+      ],
+      "page_numbers": [
+        1
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Dates",
+      "confidence": 0.95,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_1b5c9bed']",
+      "source_evidences": [
+        "Effective Date: December 20, 2024"
+      ]
+    },
+    {
+      "canonical_field_name": "Engagement_Period",
+      "value": "January 1, 2025 through December 31, 2025",
+      "evidence": "period covering January 1, 2025 through December 31, 2025",
+      "source_candidate_ids": [
+        "cand_ccda8ace"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        4,
+        7,
+        11,
+        13,
+        19,
+        20,
+        30,
+        31,
+        32,
+        34,
+        35,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Dates",
+      "confidence": 0.93,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_ccda8ace']",
+      "source_evidences": [
+        "period covering January 1, 2025 through December 31, 2025"
+      ]
+    },
+    {
+      "canonical_field_name": "Document_Type",
+      "value": "Engagement Letter",
+      "evidence": "Engagement Letter",
+      "source_candidate_ids": [
+        "cand_99855947"
+      ],
+      "page_numbers": [
+        1,
+        4,
+        30,
+        32,
+        34,
+        39,
+        40,
+        41,
+        42,
+        44,
+        45
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_99855947']",
+      "source_evidences": [
+        "Engagement Letter"
+      ]
+    },
+    {
+      "canonical_field_name": "Scope_of_Services",
+      "value": "tax compliance and tax consulting services",
+      "evidence": "tax compliance and consulting services listed in Appendix I",
+      "source_candidate_ids": [
+        "cand_e5c3964f"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        25
+      ],
+      "segment_ids": [
+        "seg_001"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_e5c3964f']",
+      "source_evidences": [
+        "tax compliance and consulting services listed in Appendix I"
+      ]
+    },
+    {
+      "canonical_field_name": "Payment_Terms",
+      "value": "Net 30 days upon receipt of invoice",
+      "evidence": "Payment terms: Net 30 days upon receipt of invoice",
+      "source_candidate_ids": [
+        "cand_35f490e4"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        19,
+        22,
+        23,
+        24,
+        27,
+        29,
+        40,
+        41,
+        42,
+        44,
+        45
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.91,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_35f490e4']",
+      "source_evidences": [
+        "Payment terms: Net 30 days upon receipt of invoice"
+      ]
+    },
+    {
+      "canonical_field_name": "Tax_Organizer_Service_Deliverable",
+      "value": "individual income tax organizer(s)",
+      "evidence": "individual income tax organizer(s)",
+      "source_candidate_ids": [
+        "cand_06d4e424"
+      ],
+      "page_numbers": [
+        1,
+        2,
+        3,
+        26,
+        27
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.85,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_06d4e424']",
+      "source_evidences": [
+        "individual income tax organizer(s)"
+      ]
+    },
+    {
+      "canonical_field_name": "Audit_Limitation_Clause",
+      "value": "We will not audit or independently verify data",
+      "evidence": "We will not audit or independently verify data submitted by Client",
+      "source_candidate_ids": [
+        "cand_48722643"
+      ],
+      "page_numbers": [
+        1,
+        3
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.89,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_48722643']",
+      "source_evidences": [
+        "We will not audit or independently verify data submitted by Client"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_43500",
+      "value": "USD 43,500",
+      "evidence": "Total Fee: USD 43,500",
+      "source_candidate_ids": [
+        "cand_0cf1aaeb"
+      ],
+      "page_numbers": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12,
+        14,
+        18,
+        19,
+        20,
+        21,
+        25,
+        27,
+        28,
+        29,
+        40,
+        41,
+        43,
+        45
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_0cf1aaeb']",
+      "source_evidences": [
+        "Total Fee: USD 43,500"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Structure_Basis",
+      "value": "attached fee schedule",
+      "evidence": "fees based upon attached fee schedule",
+      "source_candidate_ids": [
+        "cand_b34b0f1d"
+      ],
+      "page_numbers": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12,
+        14,
+        18,
+        19,
+        20,
+        21,
+        25,
+        27,
+        28,
+        29,
+        40,
+        41,
+        43,
+        45
+      ],
+      "segment_ids": [
+        "seg_002"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_b34b0f1d']",
+      "source_evidences": [
+        "fees based upon attached fee schedule"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_300",
+      "value": "$300",
+      "evidence": "Fee: $300",
+      "source_candidate_ids": [
+        "cand_306f8907"
+      ],
+      "page_numbers": [
+        2
+      ],
+      "segment_ids": [
+        "seg_003"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_306f8907']",
+      "source_evidences": [
+        "Fee: $300"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_518",
+      "value": "USD 518",
+      "evidence": "Fee: USD 518",
+      "source_candidate_ids": [
+        "cand_fa1ffb11"
+      ],
+      "page_numbers": [
+        11
+      ],
+      "segment_ids": [
+        "seg_013"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_fa1ffb11']",
+      "source_evidences": [
+        "Fee: USD 518"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_12000",
+      "value": "USD 12,000",
+      "evidence": "Addendum IV Fee: USD 12,000",
+      "source_candidate_ids": [
+        "cand_7749b778"
+      ],
+      "page_numbers": [
+        13
+      ],
+      "segment_ids": [
+        "seg_015"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_7749b778']",
+      "source_evidences": [
+        "Addendum IV Fee: USD 12,000"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_684",
+      "value": "USD 684",
+      "evidence": "Fee: USD 684",
+      "source_candidate_ids": [
+        "cand_e523e595"
+      ],
+      "page_numbers": [
+        15
+      ],
+      "segment_ids": [
+        "seg_017"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_e523e595']",
+      "source_evidences": [
+        "Fee: USD 684"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_288",
+      "value": "USD 288",
+      "evidence": "Fee: USD 288",
+      "source_candidate_ids": [
+        "cand_418b029a"
+      ],
+      "page_numbers": [
+        16
+      ],
+      "segment_ids": [
+        "seg_018"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_418b029a']",
+      "source_evidences": [
+        "Fee: USD 288"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_863",
+      "value": "USD 863",
+      "evidence": "Fee: USD 863",
+      "source_candidate_ids": [
+        "cand_112f7be7"
+      ],
+      "page_numbers": [
+        17
+      ],
+      "segment_ids": [
+        "seg_019"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_112f7be7']",
+      "source_evidences": [
+        "Fee: USD 863"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_805",
+      "value": "USD 805",
+      "evidence": "Fee: USD 805",
+      "source_candidate_ids": [
+        "cand_b49e04f3"
+      ],
+      "page_numbers": [
+        22
+      ],
+      "segment_ids": [
+        "seg_024"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_b49e04f3']",
+      "source_evidences": [
+        "Fee: USD 805"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_1937",
+      "value": "USD 1,937",
+      "evidence": "Fee: USD 1,937",
+      "source_candidate_ids": [
+        "cand_28c8b2df"
+      ],
+      "page_numbers": [
+        23
+      ],
+      "segment_ids": [
+        "seg_025"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_28c8b2df']",
+      "source_evidences": [
+        "Fee: USD 1,937"
+      ]
+    },
+    {
+      "canonical_field_name": "Fee_Amount_USD_375",
+      "value": "USD 375",
+      "evidence": "Fee: USD 375",
+      "source_candidate_ids": [
+        "cand_1279f23b"
+      ],
+      "page_numbers": [
+        24
+      ],
+      "segment_ids": [
+        "seg_026"
+      ],
+      "category_hint": "Financials",
+      "confidence": 0.92,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_1279f23b']",
+      "source_evidences": [
+        "Fee: USD 375"
+      ]
+    },
+    {
+      "canonical_field_name": "Addendum_Identifier",
+      "value": "Addendum IV",
+      "evidence": "Addendum IV",
+      "source_candidate_ids": [
+        "cand_f66033e3"
+      ],
+      "page_numbers": [
+        30
+      ],
+      "segment_ids": [
+        "seg_035"
+      ],
+      "category_hint": "Identifiers",
+      "confidence": 0.88,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_f66033e3']",
+      "source_evidences": [
+        "Addendum IV"
+      ]
+    },
+    {
+      "canonical_field_name": "Addendum_IV_Title",
+      "value": "Global Data Processing Addendum",
+      "evidence": "Global Data Processing Addendum",
+      "source_candidate_ids": [
+        "cand_d9107c8a"
+      ],
+      "page_numbers": [
+        30
+      ],
+      "segment_ids": [
+        "seg_035"
+      ],
+      "category_hint": "Scope",
+      "confidence": 0.9,
+      "status": "consolidated",
+      "resolution_notes": "Consolidated from candidate(s) ['cand_d9107c8a']",
+      "source_evidences": [
+        "Global Data Processing Addendum"
+      ]
+    }
+  ]
+}
