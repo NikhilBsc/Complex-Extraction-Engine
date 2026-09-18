@@ -35,12 +35,13 @@ from __future__ import annotations
 import logging
 import time
 from dataclasses import dataclass, field
+from difflib import SequenceMatcher
 from typing import Any, Dict, List, Optional
 
 from extraction.segment import Segment
 from gpt.client import call_gpt_with_fallback, PRIMARY_MODEL
 from gpt.models import ExtractedField, ExtractionResult
-from gpt.prompts import SYSTEM_PROMPT, FALLBACK_SYSTEM_PROMPT, get_user_prompt, build_fallback_prompt
+from gpt.prompts import SYSTEM_PROMPT, FALLBACK_SYSTEM_PROMPT, get_user_prompt, build_fallback_prompt, SCHEMA_FIELDS_LIST
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,146 @@ DEFAULT_CONFIDENCE: float = 0.80
 # 2.5s gives headroom for any fallback calls on the same segment.
 # Set to 0 if you are on a paid Groq plan.
 INTER_SEGMENT_DELAY: float = 2.5
+
+
+# --------------------------------------------------------------------------- #
+# Target Schema Field Mapper
+# --------------------------------------------------------------------------- #
+
+# Canonical ordered list of the 6 target fields
+TARGET_FIELDS: List[str] = SCHEMA_FIELDS_LIST
+
+# Alias table — maps common GPT field name variations to canonical target names
+FIELD_ALIASES: Dict[str, str] = {
+    # Services
+    "service": "Services",
+    "services": "Services",
+    "service type": "Services",
+    "service description": "Services",
+    "scope of services": "Services",
+    "scope": "Services",
+    "scope of work": "Services",
+    "nature of services": "Services",
+    "type of service": "Services",
+    "work description": "Services",
+    "deliverables": "Services",
+    "engagement description": "Services",
+
+    # Pricing Method
+    "pricing method": "Pricing Method",
+    "pricing": "Pricing Method",
+    "billing method": "Pricing Method",
+    "billing model": "Pricing Method",
+    "fee structure": "Pricing Method",
+    "price model": "Pricing Method",
+    "fee type": "Pricing Method",
+    "pricing basis": "Pricing Method",
+    "fee basis": "Pricing Method",
+    "billing basis": "Pricing Method",
+    "rate type": "Pricing Method",
+    "billing type": "Pricing Method",
+    "pricing model": "Pricing Method",
+
+    # Payment Term
+    "payment term": "Payment Term",
+    "payment terms": "Payment Term",
+    "payment period": "Payment Term",
+    "payment due": "Payment Term",
+    "due date": "Payment Term",
+    "payment deadline": "Payment Term",
+    "net terms": "Payment Term",
+    "payment duration": "Payment Term",
+    "days to pay": "Payment Term",
+    "invoice payment term": "Payment Term",
+    "invoice due": "Payment Term",
+    "payment timeline": "Payment Term",
+
+    # Payment Term Start Description
+    "payment term start description": "Payment Term Start Description",
+    "payment start description": "Payment Term Start Description",
+    "payment trigger": "Payment Term Start Description",
+    "invoice trigger": "Payment Term Start Description",
+    "payment commencement": "Payment Term Start Description",
+    "payment term description": "Payment Term Start Description",
+    "payment term start": "Payment Term Start Description",
+    "start of payment term": "Payment Term Start Description",
+    "payment term commencement": "Payment Term Start Description",
+
+    # Payment Term Start Details
+    "payment term start details": "Payment Term Start Details",
+    "payment start details": "Payment Term Start Details",
+    "payment conditions": "Payment Term Start Details",
+    "payment term conditions": "Payment Term Start Details",
+    "payment start conditions": "Payment Term Start Details",
+    "payment qualifications": "Payment Term Start Details",
+    "payment term qualifications": "Payment Term Start Details",
+
+    # Special Invoicing Requirements
+    "special invoicing requirements": "Special Invoicing Requirements",
+    "invoicing requirements": "Special Invoicing Requirements",
+    "special invoicing": "Special Invoicing Requirements",
+    "invoice requirements": "Special Invoicing Requirements",
+    "billing requirements": "Special Invoicing Requirements",
+    "invoicing instructions": "Special Invoicing Requirements",
+    "special billing": "Special Invoicing Requirements",
+    "invoice instructions": "Special Invoicing Requirements",
+    "invoicing conditions": "Special Invoicing Requirements",
+    "billing instructions": "Special Invoicing Requirements",
+    "invoice format requirements": "Special Invoicing Requirements",
+}
+
+
+def _map_to_target_field(field_name: str) -> Optional[str]:
+    """
+    Map a GPT-returned field name to one of the 6 canonical target schema fields.
+
+    Strategy:
+      1. Direct alias lookup (fastest, highest precision)
+      2. Exact case-insensitive match against target field names
+      3. Fuzzy similarity match (catches minor GPT variations)
+
+    Returns the canonical target field name, or None if no match found.
+    Fields that return None are DISCARDED from extraction output.
+    """
+    name_lower = field_name.lower().strip()
+
+    # 1. Direct alias lookup
+    if name_lower in FIELD_ALIASES:
+        return FIELD_ALIASES[name_lower]
+
+    # 2. Exact case-insensitive match
+    for target in TARGET_FIELDS:
+        if name_lower == target.lower():
+            return target
+
+    # 3. Fuzzy similarity match
+    best_match: Optional[str] = None
+    best_score: float = 0.0
+
+    for alias, canonical in FIELD_ALIASES.items():
+        score = SequenceMatcher(None, name_lower, alias).ratio()
+        if score > best_score:
+            best_score = score
+            best_match = canonical
+
+    for target in TARGET_FIELDS:
+        score = SequenceMatcher(None, name_lower, target.lower()).ratio()
+        if score > best_score:
+            best_score = score
+            best_match = target
+
+    if best_score >= 0.78:
+        logger.debug(
+            "Field '%s' fuzzy-mapped to '%s' (score=%.2f)",
+            field_name, best_match, best_score,
+        )
+        return best_match
+
+    logger.debug(
+        "Field '%s' not mapped to any target field (best_score=%.2f) — discarded.",
+        field_name, best_score,
+    )
+    return None
 
 
 # --------------------------------------------------------------------------- #
@@ -106,6 +247,138 @@ class ExtractionSummary:
         return round(input_cost + output_cost, 4)
 
 
+def normalize_pricing_method(raw_value: str, evidence: str = "") -> str:
+    """
+    Categorize raw pricing method text into concise standard terms using keywords.
+    Domain mapping rules:
+      - 'fee schedule', 'fee per item', 'flat fee', 'fixed price', 'fixed fee', 'fixed amount' -> 'Fixed Fee'
+      - 'hourly rates', 'time incurred', 'time spent', 'time and materials', 't&m' -> 'Time & Materials'
+      - If capped amount/maximum is present alongside T&M -> 'Time & Materials (Capped)'
+      - 'milestone', 'progress billing', 'stage payments' -> 'Milestone'
+    """
+    if not raw_value:
+        return raw_value
+
+    text_to_check = f"{raw_value} {evidence}".lower()
+    is_capped = any(k in text_to_check for k in ["capped", "cap", "not to exceed", "lesser of", "maximum"])
+    categories = []
+
+    # Fixed Fee keywords
+    fixed_fee_kw = ["fixed fee", "fixed price", "fixed rate", "flat fee", "fee schedule", "fee per item", "lump sum", "fixed amount"]
+    if any(k in text_to_check for k in fixed_fee_kw):
+        categories.append("Fixed Fee")
+
+    # Time & Materials keywords
+    tm_kw = ["t&m", "t & m", "time and material", "time & material", "time and materials", "time & materials", "time incurred", "time spent", "hourly rates", "hourly rate", "hourly"]
+    if any(k in text_to_check for k in tm_kw):
+        if is_capped:
+            categories.append("Time & Materials (Capped)")
+        else:
+            categories.append("Time & Materials")
+
+    # Milestone / Progress Billing keywords
+    if any(k in text_to_check for k in ["milestone", "stage payment", "deliverable-based", "deliverable based", "progress billing"]):
+        categories.append("Milestone")
+
+    # Retainer keywords
+    if any(k in text_to_check for k in ["retainer", "monthly retainer"]):
+        categories.append("Retainer")
+
+    if categories:
+        return ", ".join(dict.fromkeys(categories))
+
+    # If raw_value is already concise, return as-is
+    if len(raw_value) <= 30:
+        return raw_value.strip()
+
+    return raw_value[:30].strip()
+
+
+def normalize_payment_term(raw_value: str, evidence: str = "") -> str:
+    """
+    Standardize payment term to benchmark canonical labels:
+    - '10 Working Days', '30 Days', '60 Days', 'Upon Receipt', etc.
+    """
+    if not raw_value:
+        return raw_value
+    val_ev = f"{raw_value} {evidence}".lower()
+
+    import re
+    match_wd = re.search(r"(\d+|ten|thirty|forty-five|sixty|ninety)\s*(?:working|business)\s*days?", val_ev)
+    if match_wd:
+        num = match_wd.group(1).lower()
+        num_map = {"ten": "10", "thirty": "30", "forty-five": "45", "sixty": "60", "ninety": "90"}
+        val_str = num_map.get(num, num)
+        return f"{val_str} Working Days"
+
+    match_days = re.search(r"(\d+|ten|thirty|forty-five|sixty|ninety)\s*days?", val_ev)
+    if match_days:
+        num = match_days.group(1).lower()
+        num_map = {"ten": "10", "thirty": "30", "forty-five": "45", "sixty": "60", "ninety": "90"}
+        val_str = num_map.get(num, num)
+        return f"{val_str} Days"
+
+    if any(k in val_ev for k in ["upon receipt", "on receipt", "due immediately"]):
+        return "Upon Receipt"
+
+    return raw_value.strip()
+
+
+def normalize_payment_start_description(raw_value: str, evidence: str = "") -> str:
+    """
+    Standardize payment term start description trigger to benchmark canonical labels.
+    Dynamically extracts the actual number of days/working days from the text.
+    """
+    if not raw_value:
+        return raw_value
+
+    import re
+    val_ev = f"{raw_value} {evidence}".lower()
+
+    num_map = {
+        "ten": "10", "thirty": "30", "forty-five": "45", "forty five": "45",
+        "sixty": "60", "ninety": "90", "twenty": "20", "twenty-eight": "28",
+    }
+
+    # Pattern: "within N working days of invoice date" (N can be a word or digit)
+    match_wd_invoice = re.search(
+        r"(?:within\s+)?(\d+|ten|thirty|forty[\-\s]?five|sixty|ninety|twenty(?:[\-\s]eight)?)\s*(?:working|business)\s*days?\s*(?:of|from|after)?\s*(?:the\s*)?invoice",
+        val_ev
+    )
+    if match_wd_invoice:
+        num_raw = match_wd_invoice.group(1).strip()
+        num_str = num_map.get(num_raw, num_raw)
+        return f"Within {num_str} Working Days of the Invoice Date"
+
+    # Generic: any working/business day mention with invoice
+    if ("working day" in val_ev or "business day" in val_ev) and "invoice" in val_ev:
+        # Try to find a number nearby
+        match_num = re.search(r"(\d+|ten|thirty|sixty|ninety)\s*(?:working|business)\s*days?", val_ev)
+        if match_num:
+            num_raw = match_num.group(1).strip()
+            num_str = num_map.get(num_raw, num_raw)
+            return f"Within {num_str} Working Days of the Invoice Date"
+        return "Within Working Days of the Invoice Date"
+
+    # "no later than N days from invoice date"
+    match_nlt = re.search(
+        r"no\s+later\s+than\s+(\d+|thirty|sixty|ninety)\s*days?\s+(?:from|of|after)?\s*(?:the\s*)?invoice",
+        val_ev
+    )
+    if match_nlt:
+        num_raw = match_nlt.group(1).strip()
+        num_str = num_map.get(num_raw, num_raw)
+        return f"No Later Than {num_str} Days from Invoice Date"
+
+    if any(k in val_ev for k in ["invoice date", "date of invoice", "from invoice", "of invoice"]):
+        return "From the Invoice Date"
+
+    if any(k in val_ev for k in ["receipt of invoice", "upon receipt", "on receipt"]):
+        return "Upon Receipt of Invoice"
+
+    return raw_value.strip()
+
+
 # --------------------------------------------------------------------------- #
 # Field parsing
 # --------------------------------------------------------------------------- #
@@ -118,11 +391,6 @@ def _parse_gpt_fields(
 ) -> List[ExtractedField]:
     """
     Convert raw GPT JSON field dicts into ExtractedField objects.
-
-    Handles:
-      - Missing keys (graceful defaults)
-      - Confidence out of range (clamped)
-      - Empty field name or value (skipped)
     """
     extracted: List[ExtractedField] = []
 
@@ -137,22 +405,40 @@ def _parse_gpt_fields(
             continue
 
         # Reject placeholder-like values
-        if value.lower() in ("n/a", "none", "null", "not specified", "unknown", ""):
+        if value.lower() in ("n/a", "none", "null", "not specified", "unknown", "not mentioned", ""):
             logger.debug("Skipping null-value field: %r = %r", field_name, value)
             continue
 
+        # ── Schema enforcement: map to one of the 6 target fields ──────────
+        canonical_name = _map_to_target_field(field_name)
+        if canonical_name is None:
+            logger.debug(
+                "Discarding non-target field: %r (not in target schema)", field_name
+            )
+            continue
+        # ───────────────────────────────────────────────────────────────────
+
+        # Special normalization for standard fields
+        if canonical_name == "Pricing Method":
+            value = normalize_pricing_method(value, evidence)
+        elif canonical_name == "Payment Term":
+            value = normalize_payment_term(value, evidence)
+        elif canonical_name == "Payment Term Start Description":
+            value = normalize_payment_start_description(value, evidence)
+
         extracted.append(ExtractedField(
-            field_name=field_name,
+            field_name=canonical_name,       # Always use canonical name
             value=value,
             confidence=confidence,
             evidence=evidence,
             segment_id=segment_id,
             page_numbers=page_numbers,
             source_type=source_type,
-            raw_gpt_field=field_name,
+            raw_gpt_field=field_name,        # Preserve original for traceability
         ))
 
     return extracted
+
 
 
 # --------------------------------------------------------------------------- #
