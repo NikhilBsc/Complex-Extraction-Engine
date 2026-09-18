@@ -207,9 +207,10 @@ def call_gpt_with_fallback(
     Try primary model first, then fallback models if it fails.
     """
     candidate_models = [
-        "groq/compound",          # Groq's best compound reasoning model
+        "openai/gpt-oss-120b",    # Primary 120B model
         "qwen/qwen3.8-27b",       # Qwen 27B strong JSON extraction
-        "openai/gpt-oss-120b",    # 120B OSS fallback
+        "groq/compound",          # Groq compound model
+        "openai/gpt-oss-20b",     # 20B fast fallback
     ]
 
     last_exc = None
@@ -222,3 +223,4 @@ def call_gpt_with_fallback(
             last_exc = exc
 
     raise RuntimeError(f"All Groq models failed. Last error: {last_exc}")
+
